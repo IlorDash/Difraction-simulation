@@ -21,8 +21,6 @@ namespace Difraction_simulation {
             GraphForm.myExperiment.slitPeriod = float.Parse(slitPeriod.Text) / Math.Pow(10, 6);
             GraphForm.myExperiment.slitNum = int.Parse(numOfSlits.Text);
 
-            GraphForm.myExperiment.slitPeriod = (GraphForm.myExperiment.slitNum == 1) ? GraphForm.myExperiment.slitWidth : GraphForm.myExperiment.slitPeriod;
-
             var graphForm = new GraphForm();
             graphForm.ShowDialog();
         }
