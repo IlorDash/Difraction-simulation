@@ -33,7 +33,8 @@ namespace Difraction_simulation {
         public static experimentData myExperiment;
         private float xMinReal = (float)-0.15; //in metres
         private static float xMaxReal = (float)0.15; //in metres
-        private float xStepReal = xMaxReal / 10000;
+        private float xStepReal = xMaxReal / 1000000;
+        private int yOffset = 12;
 
         private float intensityByCoord(float x) {
             if (myExperiment.slitNum == 1) {
@@ -48,30 +49,46 @@ namespace Difraction_simulation {
 
         private void drawCoordSystem(Graphics myGraph) {
             Pen blackPen = new Pen(Color.Black);
-            blackPen.EndCap = LineCap.ArrowAnchor;
+            AdjustableArrowCap bigArrow = new AdjustableArrowCap(5, 5);
+            blackPen.CustomEndCap = bigArrow;
             blackPen.Width = 2;
-            myGraph.DrawLine(blackPen, 0, graphBox.Height, graphBox.Width, graphBox.Height);
-            myGraph.DrawLine(blackPen, graphBox.Width / 2, graphBox.Height, graphBox.Width / 2, 0);
-            float xCellSize = Map((float)0.01, 0, xMaxReal - xMinReal, 0, graphBox.Width);
-            float yCellSize = Map((float)0.1, 0, 1, 0, graphBox.Height);
+            myGraph.DrawLine(blackPen, 0, graphBox.Height - yOffset, graphBox.Width, graphBox.Height - yOffset);
+
+            int xCenterCoord;
+            float xCellSize;
+            if (xMinReal < 0) {
+                xCenterCoord = (int)Map(Math.Abs(xMinReal), 0, xMaxReal + Math.Abs(xMinReal), 0, graphBox.Width);
+                xCellSize = Map((float)0.01, 0, xMaxReal + Math.Abs(xMinReal), 0, graphBox.Width);
+                myGraph.DrawLine(blackPen, xCenterCoord, graphBox.Height - yOffset, xCenterCoord, 0);
+            } else {
+                xCenterCoord = -(int)Map(2 * xMinReal, 0, xMaxReal, 0, graphBox.Width);
+                xCellSize = Map((float)0.01, 0, xMaxReal, 0, graphBox.Width + Math.Abs(xCenterCoord));
+            }
+
+            float yCellSize = Map((float)0.1, 0, 1, 0, graphBox.Height - yOffset);
             blackPen.Width = 1;
             blackPen.EndCap = LineCap.NoAnchor;
-            for (float i = (graphBox.Width / 2 + xCellSize); i <= graphBox.Width; i += xCellSize) {
-                myGraph.DrawLine(blackPen, i, 0, i, graphBox.Height);
-            }
-            for (float i = (graphBox.Width / 2 - xCellSize); i >= 0; i -= xCellSize) {
-                myGraph.DrawLine(blackPen, i, 0, i, graphBox.Height);
-            }
-            for (float i = (graphBox.Height + yCellSize); i >= 0; i -= yCellSize) {
-                myGraph.DrawLine(blackPen, 0, i, graphBox.Width, i);
-            }
             Font axisFont = new Font("Arial", 10, FontStyle.Bold);
             SolidBrush drawBrush = new SolidBrush(Color.Black);
             Font coordFont = new Font("Arial", 8);
-            myGraph.DrawString("10", coordFont, drawBrush, (graphBox.Width + xCellSize) / 2 - 6, graphBox.Height - 14);
-            myGraph.DrawString("-10", coordFont, drawBrush, (graphBox.Width - xCellSize) / 2 - 12, graphBox.Height - 14);
-            myGraph.DrawString("I(x)/I(0)", axisFont, drawBrush, graphBox.Width / 2 - 50, 5);
-            myGraph.DrawString("X [mm]", axisFont, drawBrush, graphBox.Width - 15, graphBox.Height - 20);
+            for (float i = (xCenterCoord + xCellSize); i <= graphBox.Width; i += xCellSize) {
+                myGraph.DrawLine(blackPen, i, 0, i, graphBox.Height - yOffset);
+            }
+            for (float i = (xCenterCoord - xCellSize); i >= 0; i -= xCellSize) {
+                myGraph.DrawLine(blackPen, i, 0, i, graphBox.Height - yOffset);
+            }
+            myGraph.DrawString("0", coordFont, drawBrush, xCenterCoord + xCellSize / 10, graphBox.Height - yOffset - 12);
+            int coord = 10;
+            for (float i = (graphBox.Height - yCellSize - yOffset); i >= 0; i -= yCellSize) {
+                myGraph.DrawLine(blackPen, 0, i, graphBox.Width, i);
+                myGraph.DrawString(coord.ToString(), coordFont, drawBrush, xCenterCoord + xCellSize / 10, i - 12);
+                coord += 10;
+            }
+
+            //myGraph.DrawString("10", coordFont, drawBrush, (graphBox.Width + xCellSize) / 2 - 6, graphBox.Height - 14);
+            //myGraph.DrawString("-10", coordFont, drawBrush, (graphBox.Width - xCellSize) / 2 - 12, graphBox.Height - 14);
+            myGraph.DrawString("I(x)/I(0) [%]", axisFont, drawBrush, xCenterCoord - 75, 5);
+            myGraph.DrawString("X [mm]", axisFont, drawBrush, graphBox.Width - 50, graphBox.Height - 20 - yOffset);
         }
 
         private void drawGraph(Graphics myGraph) {
@@ -80,13 +97,11 @@ namespace Difraction_simulation {
             Pen bluePen = new Pen(Color.Blue);
             bluePen.Width = 1;
 
-            int nmbInterv = (int)(xMaxReal / xStepReal + 1) * 2;
-            float xPixInRealStep = xStepReal * graphBox.Width / xMaxReal;
+            int nmbInterv = (int)((xMaxReal + Math.Abs(xMinReal)) / xStepReal + 1);
 
             int yMinReal = 0;
             int yMaxReal = 1; //in I(x)/I(0)
             double yStepReal = intensityByCoord(xMinReal);
-            double yPixInRealStep = yStepReal * graphBox.Height / yMaxReal;
 
             float xPrevReal = xMinReal;
             float intensityPrev = intensityByCoord(xPrevReal);
@@ -96,18 +111,25 @@ namespace Difraction_simulation {
                 float intensityReal = intensityByCoord(xReal);
                 myLine.x1 = (int)(Map(xPrevReal, xMinReal, xMaxReal, 0, graphBox.Width));
                 myLine.x2 = (int)(Map(xReal, xMinReal, xMaxReal, 0, graphBox.Width));
-                myLine.y1 = graphBox.Height - (int)(Map(intensityPrev, yMinReal, yMaxReal, 0, graphBox.Height));
-                myLine.y2 = graphBox.Height - (int)(Map(intensityReal, yMinReal, yMaxReal, 0, graphBox.Height));
+                myLine.y1 = graphBox.Height - (int)(Map(intensityPrev, yMinReal, yMaxReal, 0, graphBox.Height - yOffset));
+                myLine.y2 = graphBox.Height - (int)(Map(intensityReal, yMinReal, yMaxReal, 0, graphBox.Height - yOffset));
 
-                myGraph.DrawLine(bluePen, myLine.x1, myLine.y1, myLine.x2, myLine.y2);
+                myGraph.DrawLine(bluePen, myLine.x1, myLine.y1 - yOffset, myLine.x2, myLine.y2 - yOffset);
                 xPrevReal = xReal;
                 intensityPrev = intensityReal;
             }
         }
 
         private void DrawGraphButton_Click(object sender, EventArgs e) {
-            graphBox.Width = (int)(this.Size.Width - 70);
-            graphBox.Height = (int)(this.Size.Height - 100);
+
+            //myExperiment.lengthToScreen = 1;
+            //myExperiment.slitNum = 1;
+            //myExperiment.slitWidth = 50 / Math.Pow(10, 6);
+            //myExperiment.waveLength = 660 / Math.Pow(10, 9);
+            //myExperiment.slitPeriod = 1 / Math.Pow(10, 6);
+
+//            graphBox.Width = (int)(this.Size.Width - 70);
+//            graphBox.Height = (int)(this.Size.Height - 100);
             xMinReal = float.Parse(xMinText.Text) / 1000;   //in metres
             xMaxReal = float.Parse(xMaxText.Text) / 1000;
             Graphics myGraph = graphBox.CreateGraphics();

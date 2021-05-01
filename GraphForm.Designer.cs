@@ -24,7 +24,6 @@ namespace Difraction_simulation {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.graphBox = new System.Windows.Forms.PictureBox();
             this.DrawGraphButton = new System.Windows.Forms.Button();
             this.waveLengthText = new System.Windows.Forms.TextBox();
             this.lengthToScreen = new System.Windows.Forms.TextBox();
@@ -37,22 +36,14 @@ namespace Difraction_simulation {
             this.xMaxText = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.graphBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.graphBox)).BeginInit();
             this.SuspendLayout();
-            // 
-            // graphBox
-            // 
-            this.graphBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.graphBox.Location = new System.Drawing.Point(39, 22);
-            this.graphBox.Name = "graphBox";
-            this.graphBox.Size = new System.Drawing.Size(721, 287);
-            this.graphBox.TabIndex = 3;
-            this.graphBox.TabStop = false;
             // 
             // DrawGraphButton
             // 
             this.DrawGraphButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.DrawGraphButton.Location = new System.Drawing.Point(351, 323);
+            this.DrawGraphButton.Location = new System.Drawing.Point(355, 315);
             this.DrawGraphButton.Name = "DrawGraphButton";
             this.DrawGraphButton.Size = new System.Drawing.Size(75, 23);
             this.DrawGraphButton.TabIndex = 4;
@@ -65,7 +56,7 @@ namespace Difraction_simulation {
             this.waveLengthText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.waveLengthText.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.waveLengthText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.waveLengthText.Location = new System.Drawing.Point(571, 22);
+            this.waveLengthText.Location = new System.Drawing.Point(594, 31);
             this.waveLengthText.Name = "waveLengthText";
             this.waveLengthText.ReadOnly = true;
             this.waveLengthText.Size = new System.Drawing.Size(189, 22);
@@ -76,7 +67,7 @@ namespace Difraction_simulation {
             this.lengthToScreen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lengthToScreen.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.lengthToScreen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lengthToScreen.Location = new System.Drawing.Point(571, 50);
+            this.lengthToScreen.Location = new System.Drawing.Point(594, 59);
             this.lengthToScreen.Name = "lengthToScreen";
             this.lengthToScreen.ReadOnly = true;
             this.lengthToScreen.Size = new System.Drawing.Size(189, 22);
@@ -87,7 +78,7 @@ namespace Difraction_simulation {
             this.slitWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.slitWidth.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.slitWidth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.slitWidth.Location = new System.Drawing.Point(571, 78);
+            this.slitWidth.Location = new System.Drawing.Point(594, 87);
             this.slitWidth.Name = "slitWidth";
             this.slitWidth.ReadOnly = true;
             this.slitWidth.Size = new System.Drawing.Size(189, 22);
@@ -98,7 +89,7 @@ namespace Difraction_simulation {
             this.slitPeriod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.slitPeriod.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.slitPeriod.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.slitPeriod.Location = new System.Drawing.Point(571, 106);
+            this.slitPeriod.Location = new System.Drawing.Point(594, 115);
             this.slitPeriod.Name = "slitPeriod";
             this.slitPeriod.ReadOnly = true;
             this.slitPeriod.Size = new System.Drawing.Size(189, 22);
@@ -109,7 +100,7 @@ namespace Difraction_simulation {
             this.numOfSlits.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.numOfSlits.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.numOfSlits.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numOfSlits.Location = new System.Drawing.Point(571, 134);
+            this.numOfSlits.Location = new System.Drawing.Point(594, 143);
             this.numOfSlits.Name = "numOfSlits";
             this.numOfSlits.ReadOnly = true;
             this.numOfSlits.Size = new System.Drawing.Size(189, 22);
@@ -119,7 +110,7 @@ namespace Difraction_simulation {
             // 
             this.WaterMark.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.WaterMark.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.WaterMark.Location = new System.Drawing.Point(571, 326);
+            this.WaterMark.Location = new System.Drawing.Point(599, 318);
             this.WaterMark.Name = "WaterMark";
             this.WaterMark.ReadOnly = true;
             this.WaterMark.Size = new System.Drawing.Size(189, 15);
@@ -128,9 +119,9 @@ namespace Difraction_simulation {
             // 
             // gridCheckBox
             // 
-            this.gridCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.gridCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.gridCheckBox.AutoSize = true;
-            this.gridCheckBox.Location = new System.Drawing.Point(465, 324);
+            this.gridCheckBox.Location = new System.Drawing.Point(464, 315);
             this.gridCheckBox.Name = "gridCheckBox";
             this.gridCheckBox.Size = new System.Drawing.Size(57, 21);
             this.gridCheckBox.TabIndex = 11;
@@ -139,8 +130,8 @@ namespace Difraction_simulation {
             // 
             // xMinText
             // 
-            this.xMinText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.xMinText.Location = new System.Drawing.Point(115, 323);
+            this.xMinText.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.xMinText.Location = new System.Drawing.Point(117, 315);
             this.xMinText.Name = "xMinText";
             this.xMinText.Size = new System.Drawing.Size(55, 22);
             this.xMinText.TabIndex = 12;
@@ -148,8 +139,8 @@ namespace Difraction_simulation {
             // 
             // xMaxText
             // 
-            this.xMaxText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.xMaxText.Location = new System.Drawing.Point(272, 324);
+            this.xMaxText.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.xMaxText.Location = new System.Drawing.Point(273, 315);
             this.xMaxText.Name = "xMaxText";
             this.xMaxText.Size = new System.Drawing.Size(55, 22);
             this.xMaxText.TabIndex = 13;
@@ -157,9 +148,9 @@ namespace Difraction_simulation {
             // 
             // textBox1
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(39, 326);
+            this.textBox1.Location = new System.Drawing.Point(41, 318);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(70, 15);
@@ -168,20 +159,32 @@ namespace Difraction_simulation {
             // 
             // textBox2
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Location = new System.Drawing.Point(196, 327);
+            this.textBox2.Location = new System.Drawing.Point(197, 318);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(70, 15);
             this.textBox2.TabIndex = 15;
             this.textBox2.Text = "x max [mm]";
             // 
+            // graphBox
+            // 
+            this.graphBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.graphBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.graphBox.Location = new System.Drawing.Point(39, 22);
+            this.graphBox.Name = "graphBox";
+            this.graphBox.Size = new System.Drawing.Size(754, 287);
+            this.graphBox.TabIndex = 3;
+            this.graphBox.TabStop = false;
+            // 
             // GraphForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(791, 358);
+            this.ClientSize = new System.Drawing.Size(823, 345);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.xMaxText);
@@ -205,8 +208,6 @@ namespace Difraction_simulation {
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox graphBox;
         private System.Windows.Forms.Button DrawGraphButton;
         private System.Windows.Forms.TextBox waveLengthText;
         private System.Windows.Forms.TextBox lengthToScreen;
@@ -219,6 +220,7 @@ namespace Difraction_simulation {
         private System.Windows.Forms.TextBox xMaxText;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.PictureBox graphBox;
     }
 }
 

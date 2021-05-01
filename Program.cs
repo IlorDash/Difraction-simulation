@@ -14,6 +14,7 @@ namespace Difraction_simulation {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new DataForm());
+            //Application.Run(new GraphForm());
         }
     }
 }

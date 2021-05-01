@@ -52,8 +52,8 @@ namespace Difraction_simulation {
             this.WaterMark.Location = new System.Drawing.Point(128, 288);
             this.WaterMark.Name = "WaterMark";
             this.WaterMark.ReadOnly = true;
-            this.WaterMark.Size = new System.Drawing.Size(189, 15);
-            this.WaterMark.TabIndex = 1;
+            this.WaterMark.Size = new System.Drawing.Size(199, 15);
+            this.WaterMark.TabIndex = 30;
             this.WaterMark.Text = "Orazov Ilya IVT-12 MIET 2021";
             // 
             // lengthToScreen
@@ -61,28 +61,28 @@ namespace Difraction_simulation {
             this.lengthToScreen.Location = new System.Drawing.Point(217, 105);
             this.lengthToScreen.Name = "lengthToScreen";
             this.lengthToScreen.Size = new System.Drawing.Size(100, 22);
-            this.lengthToScreen.TabIndex = 2;
+            this.lengthToScreen.TabIndex = 1;
             // 
             // numOfSlits
             // 
             this.numOfSlits.Location = new System.Drawing.Point(217, 133);
             this.numOfSlits.Name = "numOfSlits";
             this.numOfSlits.Size = new System.Drawing.Size(100, 22);
-            this.numOfSlits.TabIndex = 3;
+            this.numOfSlits.TabIndex = 2;
             // 
             // slitWidth
             // 
             this.slitWidth.Location = new System.Drawing.Point(217, 161);
             this.slitWidth.Name = "slitWidth";
             this.slitWidth.Size = new System.Drawing.Size(100, 22);
-            this.slitWidth.TabIndex = 4;
+            this.slitWidth.TabIndex = 3;
             // 
             // slitPeriod
             // 
             this.slitPeriod.Location = new System.Drawing.Point(217, 189);
             this.slitPeriod.Name = "slitPeriod";
             this.slitPeriod.Size = new System.Drawing.Size(100, 22);
-            this.slitPeriod.TabIndex = 5;
+            this.slitPeriod.TabIndex = 4;
             // 
             // dataName1
             // 
@@ -91,7 +91,7 @@ namespace Difraction_simulation {
             this.dataName1.Name = "dataName1";
             this.dataName1.ReadOnly = true;
             this.dataName1.Size = new System.Drawing.Size(123, 15);
-            this.dataName1.TabIndex = 6;
+            this.dataName1.TabIndex = 7;
             this.dataName1.Text = "Wave lentgh λ [nm]";
             // 
             // button1
@@ -99,7 +99,7 @@ namespace Difraction_simulation {
             this.button1.Location = new System.Drawing.Point(117, 231);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(94, 23);
-            this.button1.TabIndex = 11;
+            this.button1.TabIndex = 5;
             this.button1.Text = "Start";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -111,7 +111,7 @@ namespace Difraction_simulation {
             this.dataName2.Name = "dataName2";
             this.dataName2.ReadOnly = true;
             this.dataName2.Size = new System.Drawing.Size(153, 15);
-            this.dataName2.TabIndex = 12;
+            this.dataName2.TabIndex = 8;
             this.dataName2.Text = "Length to screen L [m]";
             this.dataName2.WordWrap = false;
             // 
@@ -122,7 +122,7 @@ namespace Difraction_simulation {
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(133, 15);
-            this.textBox2.TabIndex = 13;
+            this.textBox2.TabIndex = 9;
             this.textBox2.Text = "Num of slits N [pcs]";
             // 
             // textBox3
@@ -132,7 +132,7 @@ namespace Difraction_simulation {
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(100, 15);
-            this.textBox3.TabIndex = 14;
+            this.textBox3.TabIndex = 10;
             this.textBox3.Text = "Slit width b [μm]";
             // 
             // textBox4
@@ -142,7 +142,7 @@ namespace Difraction_simulation {
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(123, 15);
-            this.textBox4.TabIndex = 15;
+            this.textBox4.TabIndex = 11;
             this.textBox4.Text = "Slit period d [μm]";
             // 
             // textBox
@@ -152,7 +152,7 @@ namespace Difraction_simulation {
             this.textBox.Name = "textBox";
             this.textBox.ReadOnly = true;
             this.textBox.Size = new System.Drawing.Size(165, 15);
-            this.textBox.TabIndex = 16;
+            this.textBox.TabIndex = 6;
             this.textBox.Text = "Enter experiment conditions";
             // 
             // DataForm
