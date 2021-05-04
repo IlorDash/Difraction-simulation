@@ -43,7 +43,7 @@ namespace Difraction_simulation {
             // DrawGraphButton
             // 
             this.DrawGraphButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.DrawGraphButton.Location = new System.Drawing.Point(355, 315);
+            this.DrawGraphButton.Location = new System.Drawing.Point(464, 505);
             this.DrawGraphButton.Name = "DrawGraphButton";
             this.DrawGraphButton.Size = new System.Drawing.Size(75, 23);
             this.DrawGraphButton.TabIndex = 4;
@@ -56,72 +56,78 @@ namespace Difraction_simulation {
             this.waveLengthText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.waveLengthText.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.waveLengthText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.waveLengthText.Location = new System.Drawing.Point(594, 31);
+            this.waveLengthText.Location = new System.Drawing.Point(834, 22);
             this.waveLengthText.Name = "waveLengthText";
             this.waveLengthText.ReadOnly = true;
             this.waveLengthText.Size = new System.Drawing.Size(189, 22);
             this.waveLengthText.TabIndex = 5;
+            this.waveLengthText.TabStop = false;
             // 
             // lengthToScreen
             // 
             this.lengthToScreen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lengthToScreen.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.lengthToScreen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lengthToScreen.Location = new System.Drawing.Point(594, 59);
+            this.lengthToScreen.Location = new System.Drawing.Point(834, 50);
             this.lengthToScreen.Name = "lengthToScreen";
             this.lengthToScreen.ReadOnly = true;
             this.lengthToScreen.Size = new System.Drawing.Size(189, 22);
             this.lengthToScreen.TabIndex = 6;
+            this.lengthToScreen.TabStop = false;
             // 
             // slitWidth
             // 
             this.slitWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.slitWidth.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.slitWidth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.slitWidth.Location = new System.Drawing.Point(594, 87);
+            this.slitWidth.Location = new System.Drawing.Point(834, 78);
             this.slitWidth.Name = "slitWidth";
             this.slitWidth.ReadOnly = true;
             this.slitWidth.Size = new System.Drawing.Size(189, 22);
             this.slitWidth.TabIndex = 7;
+            this.slitWidth.TabStop = false;
             // 
             // slitPeriod
             // 
             this.slitPeriod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.slitPeriod.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.slitPeriod.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.slitPeriod.Location = new System.Drawing.Point(594, 115);
+            this.slitPeriod.Location = new System.Drawing.Point(834, 106);
             this.slitPeriod.Name = "slitPeriod";
             this.slitPeriod.ReadOnly = true;
             this.slitPeriod.Size = new System.Drawing.Size(189, 22);
             this.slitPeriod.TabIndex = 8;
+            this.slitPeriod.TabStop = false;
             // 
             // numOfSlits
             // 
             this.numOfSlits.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.numOfSlits.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.numOfSlits.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numOfSlits.Location = new System.Drawing.Point(594, 143);
+            this.numOfSlits.Location = new System.Drawing.Point(834, 134);
             this.numOfSlits.Name = "numOfSlits";
             this.numOfSlits.ReadOnly = true;
             this.numOfSlits.Size = new System.Drawing.Size(189, 22);
             this.numOfSlits.TabIndex = 9;
+            this.numOfSlits.TabStop = false;
             // 
             // WaterMark
             // 
             this.WaterMark.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.WaterMark.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.WaterMark.Location = new System.Drawing.Point(599, 318);
+            this.WaterMark.Location = new System.Drawing.Point(790, 508);
             this.WaterMark.Name = "WaterMark";
             this.WaterMark.ReadOnly = true;
             this.WaterMark.Size = new System.Drawing.Size(189, 15);
             this.WaterMark.TabIndex = 10;
+            this.WaterMark.TabStop = false;
             this.WaterMark.Text = "Orazov Ilya IVT-12 MIET 2021";
             // 
             // gridCheckBox
             // 
             this.gridCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.gridCheckBox.AutoSize = true;
-            this.gridCheckBox.Location = new System.Drawing.Point(464, 315);
+            this.gridCheckBox.Location = new System.Drawing.Point(601, 505);
             this.gridCheckBox.Name = "gridCheckBox";
             this.gridCheckBox.Size = new System.Drawing.Size(57, 21);
             this.gridCheckBox.TabIndex = 11;
@@ -131,41 +137,43 @@ namespace Difraction_simulation {
             // xMinText
             // 
             this.xMinText.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.xMinText.Location = new System.Drawing.Point(117, 315);
+            this.xMinText.Location = new System.Drawing.Point(167, 505);
             this.xMinText.Name = "xMinText";
             this.xMinText.Size = new System.Drawing.Size(55, 22);
             this.xMinText.TabIndex = 12;
-            this.xMinText.Text = "-150";
+            this.xMinText.Text = "-50";
             // 
             // xMaxText
             // 
             this.xMaxText.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.xMaxText.Location = new System.Drawing.Point(273, 315);
+            this.xMaxText.Location = new System.Drawing.Point(362, 505);
             this.xMaxText.Name = "xMaxText";
             this.xMaxText.Size = new System.Drawing.Size(55, 22);
             this.xMaxText.TabIndex = 13;
-            this.xMaxText.Text = "150";
+            this.xMaxText.Text = "50";
             // 
             // textBox1
             // 
             this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(41, 318);
+            this.textBox1.Location = new System.Drawing.Point(72, 508);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(70, 15);
             this.textBox1.TabIndex = 14;
+            this.textBox1.TabStop = false;
             this.textBox1.Text = "x min [mm]";
             // 
             // textBox2
             // 
             this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Location = new System.Drawing.Point(197, 318);
+            this.textBox2.Location = new System.Drawing.Point(267, 508);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(70, 15);
             this.textBox2.TabIndex = 15;
+            this.textBox2.TabStop = false;
             this.textBox2.Text = "x max [mm]";
             // 
             // graphBox
@@ -176,7 +184,7 @@ namespace Difraction_simulation {
             this.graphBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.graphBox.Location = new System.Drawing.Point(39, 22);
             this.graphBox.Name = "graphBox";
-            this.graphBox.Size = new System.Drawing.Size(754, 287);
+            this.graphBox.Size = new System.Drawing.Size(984, 470);
             this.graphBox.TabIndex = 3;
             this.graphBox.TabStop = false;
             // 
@@ -184,7 +192,7 @@ namespace Difraction_simulation {
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(823, 345);
+            this.ClientSize = new System.Drawing.Size(1070, 543);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.xMaxText);
