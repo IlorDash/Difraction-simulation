@@ -15,14 +15,25 @@ namespace Difraction_simulation {
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            GraphForm.myExperiment.lengthToScreen = float.Parse(lengthToScreen.Text);
-            GraphForm.myExperiment.waveLength = float.Parse(waveLength.Text) / Math.Pow(10, 9);
-            GraphForm.myExperiment.slitWidth = float.Parse(slitWidth.Text) / Math.Pow(10, 6);
-            GraphForm.myExperiment.slitPeriod = float.Parse(slitPeriod.Text) / Math.Pow(10, 6);
-            GraphForm.myExperiment.slitNum = int.Parse(numOfSlits.Text);
+
+            try {
+                GraphForm.myExperiment.lengthToScreen = float.Parse(lengthToScreen.Text);
+                GraphForm.myExperiment.waveLength = float.Parse(waveLength.Text) / Math.Pow(10, 9);
+                GraphForm.myExperiment.slitWidth = float.Parse(slitWidth.Text) / Math.Pow(10, 6);
+                GraphForm.myExperiment.slitPeriod = float.Parse(slitPeriod.Text) / Math.Pow(10, 6);
+                GraphForm.myExperiment.slitNum = int.Parse(numOfSlits.Text);
+            } catch (Exception) {
+                return;
+            }
+
 
             var graphForm = new GraphForm();
             graphForm.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e) {
+            var aboutForm = new AboutForm();
+            aboutForm.ShowDialog();
         }
     }
 }

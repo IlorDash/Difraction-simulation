@@ -91,7 +91,7 @@ namespace Difraction_simulation {
                 myGraph.DrawString(coord.ToString(), coordFont, drawBrush, xCenterCoord + xCellSize / 10, i - 12);
                 coord += 10;
             }
-            myGraph.DrawString("I(x) / I(0) [%]", axisFont, drawBrush, xCenterCoord - 75, 5);
+            myGraph.DrawString("I(x) / I(0) [%]", axisFont, drawBrush, xCenterCoord - 80, 5);
             myGraph.DrawString("X [mm]", axisFont, drawBrush, graphBox.Width - 50, graphBox.Height - 20 - yOffset);
         }
 
@@ -154,7 +154,7 @@ namespace Difraction_simulation {
                 int y = graphBox.Height - (int)(Map(intensityReal, yMinReal, yMaxReal, 0, graphBox.Height - yOffset));
                 var coordText = Math.Round(xReal * 1000).ToString();
                 myGraph.DrawString(coordText, maxCoordFont, redBrush, x - coordText.Length * 9, y - yOffset - 35);
-                myGraph.DrawString(i.ToString(), maxCoordFont, greenBrush, x, y - yOffset - 35);
+                myGraph.DrawString(i.ToString(), maxCoordFont, greenBrush, x + 5, y - yOffset - 35);
                 //myGraph.FillEllipse(redBrush, new Rectangle(x - 5, y - yOffset - 5, 10, 10)); //disabled marks on peeks because of inaccuracy of geyCoordMax formulas
 
                 myGraph.DrawString(coordText, maxCoordFont, redBrush, 2 * xCenterCoord - x - coordText.Length * 9, y - yOffset - 35);
@@ -178,17 +178,29 @@ namespace Difraction_simulation {
         }
 
         private void GraphForm_Shown(object sender, EventArgs e) {
-            //myExperiment.lengthToScreen = 1;
-            //myExperiment.slitNum = 10;
-            //myExperiment.slitWidth = 5 / Math.Pow(10, 6);
-            //myExperiment.waveLength = 532 / Math.Pow(10, 9);
-            //myExperiment.slitPeriod = 10 / Math.Pow(10, 6);
 
             waveLengthText.Text = String.Concat("Wave lentgh λ [nm] = ", (myExperiment.waveLength * Math.Pow(10, 9)).ToString());
             lengthToScreen.Text = String.Concat("Length to screen L [m] = ", myExperiment.lengthToScreen.ToString());
             slitPeriod.Text = String.Concat("Slit period d [μm] = ", (myExperiment.slitPeriod * Math.Pow(10, 6)).ToString());
             slitWidth.Text = String.Concat("Slit width b [μm] = ", (myExperiment.slitWidth * Math.Pow(10, 6)).ToString());
             numOfSlits.Text = String.Concat("Num of slits N [pcs] = ", myExperiment.slitNum.ToString());
+        }
+
+        private void GraphForm_ResizeEnd(object sender, EventArgs e) {
+            xMinReal = float.Parse(xMinText.Text) / 1000;   //in metres
+            xMaxReal = float.Parse(xMaxText.Text) / 1000;
+            xStepReal = Map(1, 0, graphBox.Width, 0, Math.Abs(xMinReal) + Math.Abs(xMaxReal));
+            Graphics myGraph = graphBox.CreateGraphics();
+            myGraph.Clear(Color.White);
+            drawGraph(myGraph);
+            drawGraphSign(myGraph);
+            if (gridCheckBox.Checked) {
+                drawCoordSystem(myGraph);
+            }
+        }
+
+        private void GraphForm_Resize(object sender, EventArgs e) {
+
         }
     }
 }
