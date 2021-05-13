@@ -26,7 +26,6 @@ namespace Difraction_simulation {
                 return;
             }
 
-
             var graphForm = new GraphForm();
             graphForm.ShowDialog();
         }

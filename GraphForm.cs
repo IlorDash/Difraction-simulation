@@ -44,7 +44,9 @@ namespace Difraction_simulation {
         const int numOfMax = 5;
 
         private float intensityByCoord(float x) {
-            if (myExperiment.slitNum == 1) {
+            if (x == 0) {
+                return 1;
+            } else if (myExperiment.slitNum == 1) {
                 return (float)Math.Pow((Math.Sin((Math.PI * myExperiment.slitWidth * x) / (myExperiment.waveLength * myExperiment.lengthToScreen)) / ((Math.PI * myExperiment.slitWidth * x) / (myExperiment.waveLength * myExperiment.lengthToScreen))), 2);
             } else if (myExperiment.slitNum == 2) {
                 return (float)(Math.Pow((Math.Sin((Math.PI * myExperiment.slitWidth * x) / (myExperiment.waveLength * myExperiment.lengthToScreen)) / ((Math.PI * myExperiment.slitWidth * x) / (myExperiment.waveLength * myExperiment.lengthToScreen))), 2) * (1 + Math.Cos((2 * Math.PI * myExperiment.slitPeriod * x) / (myExperiment.waveLength * myExperiment.lengthToScreen))) / 2);
@@ -178,7 +180,6 @@ namespace Difraction_simulation {
         }
 
         private void GraphForm_Shown(object sender, EventArgs e) {
-
             waveLengthText.Text = String.Concat("Wave lentgh λ [nm] = ", (myExperiment.waveLength * Math.Pow(10, 9)).ToString());
             lengthToScreen.Text = String.Concat("Length to screen L [m] = ", myExperiment.lengthToScreen.ToString());
             slitPeriod.Text = String.Concat("Slit period d [μm] = ", (myExperiment.slitPeriod * Math.Pow(10, 6)).ToString());
@@ -197,10 +198,6 @@ namespace Difraction_simulation {
             if (gridCheckBox.Checked) {
                 drawCoordSystem(myGraph);
             }
-        }
-
-        private void GraphForm_Resize(object sender, EventArgs e) {
-
         }
     }
 }
