@@ -32,23 +32,24 @@ namespace Difraction_simulation {
             this.slitPeriod = new System.Windows.Forms.TextBox();
             this.numOfSlits = new System.Windows.Forms.TextBox();
             this.WaterMark = new System.Windows.Forms.TextBox();
-            this.gridCheckBox = new System.Windows.Forms.CheckBox();
-            this.xMinText = new System.Windows.Forms.TextBox();
+            this.iMaxText = new System.Windows.Forms.TextBox();
             this.xMaxText = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.graphBox = new System.Windows.Forms.PictureBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.xMinText = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.graphBox)).BeginInit();
             this.SuspendLayout();
             // 
             // DrawGraphButton
             // 
             this.DrawGraphButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.DrawGraphButton.Location = new System.Drawing.Point(487, 593);
+            this.DrawGraphButton.Location = new System.Drawing.Point(491, 585);
             this.DrawGraphButton.Name = "DrawGraphButton";
-            this.DrawGraphButton.Size = new System.Drawing.Size(75, 23);
+            this.DrawGraphButton.Size = new System.Drawing.Size(111, 28);
             this.DrawGraphButton.TabIndex = 4;
-            this.DrawGraphButton.Text = "Draw";
+            this.DrawGraphButton.Text = "Draw graph";
             this.DrawGraphButton.UseVisualStyleBackColor = true;
             this.DrawGraphButton.Click += new System.EventHandler(this.DrawGraphButton_Click);
             // 
@@ -116,7 +117,7 @@ namespace Difraction_simulation {
             // 
             this.WaterMark.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.WaterMark.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.WaterMark.Location = new System.Drawing.Point(795, 596);
+            this.WaterMark.Location = new System.Drawing.Point(839, 591);
             this.WaterMark.Name = "WaterMark";
             this.WaterMark.ReadOnly = true;
             this.WaterMark.Size = new System.Drawing.Size(189, 15);
@@ -124,30 +125,19 @@ namespace Difraction_simulation {
             this.WaterMark.TabStop = false;
             this.WaterMark.Text = "Orazov Ilya IVT-12 MIET 2021";
             // 
-            // gridCheckBox
+            // iMaxText
             // 
-            this.gridCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.gridCheckBox.AutoSize = true;
-            this.gridCheckBox.Location = new System.Drawing.Point(603, 593);
-            this.gridCheckBox.Name = "gridCheckBox";
-            this.gridCheckBox.Size = new System.Drawing.Size(57, 21);
-            this.gridCheckBox.TabIndex = 11;
-            this.gridCheckBox.Text = "Grid";
-            this.gridCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // xMinText
-            // 
-            this.xMinText.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.xMinText.Location = new System.Drawing.Point(260, 594);
-            this.xMinText.Name = "xMinText";
-            this.xMinText.Size = new System.Drawing.Size(55, 22);
-            this.xMinText.TabIndex = 12;
-            this.xMinText.Text = "-50";
+            this.iMaxText.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.iMaxText.Location = new System.Drawing.Point(746, 588);
+            this.iMaxText.Name = "iMaxText";
+            this.iMaxText.Size = new System.Drawing.Size(39, 22);
+            this.iMaxText.TabIndex = 12;
+            this.iMaxText.Text = "1";
             // 
             // xMaxText
             // 
             this.xMaxText.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.xMaxText.Location = new System.Drawing.Point(408, 593);
+            this.xMaxText.Location = new System.Drawing.Point(239, 588);
             this.xMaxText.Name = "xMaxText";
             this.xMaxText.Size = new System.Drawing.Size(55, 22);
             this.xMaxText.TabIndex = 13;
@@ -157,19 +147,19 @@ namespace Difraction_simulation {
             // 
             this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(184, 597);
+            this.textBox1.Location = new System.Drawing.Point(649, 591);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(70, 15);
+            this.textBox1.Size = new System.Drawing.Size(91, 15);
             this.textBox1.TabIndex = 14;
             this.textBox1.TabStop = false;
-            this.textBox1.Text = "x min [mm]";
+            this.textBox1.Text = "Intens max [%]";
             // 
             // textBox2
             // 
             this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Location = new System.Drawing.Point(332, 596);
+            this.textBox2.Location = new System.Drawing.Point(163, 591);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(70, 15);
@@ -189,16 +179,38 @@ namespace Difraction_simulation {
             this.graphBox.TabIndex = 3;
             this.graphBox.TabStop = false;
             // 
+            // textBox3
+            // 
+            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox3.Location = new System.Drawing.Point(316, 591);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(70, 15);
+            this.textBox3.TabIndex = 17;
+            this.textBox3.TabStop = false;
+            this.textBox3.Text = "x min [mm]";
+            // 
+            // xMinText
+            // 
+            this.xMinText.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.xMinText.Location = new System.Drawing.Point(392, 588);
+            this.xMinText.Name = "xMinText";
+            this.xMinText.Size = new System.Drawing.Size(55, 22);
+            this.xMinText.TabIndex = 16;
+            this.xMinText.Text = "-50";
+            // 
             // GraphForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1075, 631);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.xMinText);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.xMaxText);
-            this.Controls.Add(this.xMinText);
-            this.Controls.Add(this.gridCheckBox);
+            this.Controls.Add(this.iMaxText);
             this.Controls.Add(this.WaterMark);
             this.Controls.Add(this.numOfSlits);
             this.Controls.Add(this.slitPeriod);
@@ -229,12 +241,13 @@ namespace Difraction_simulation {
         private System.Windows.Forms.TextBox slitPeriod;
         private System.Windows.Forms.TextBox numOfSlits;
         private System.Windows.Forms.TextBox WaterMark;
-        private System.Windows.Forms.CheckBox gridCheckBox;
-        private System.Windows.Forms.TextBox xMinText;
+        private System.Windows.Forms.TextBox iMaxText;
         private System.Windows.Forms.TextBox xMaxText;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.PictureBox graphBox;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox xMinText;
     }
 }
 

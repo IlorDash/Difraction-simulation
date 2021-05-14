@@ -37,25 +37,38 @@ namespace Difraction_simulation {
         int xCenterCoord;
         float xCellSize;
 
-        private int yOffset = 12;
+        float yMaxReal = 1; //in I(x)/I(0)
+        private int yOffset = 15;
         int yMinReal = 0;
-        int yMaxReal = 1; //in I(x)/I(0)
 
         const int numOfMax = 5;
 
-        private float intensityByCoord(float x) {
+        private float intensityByCoord(experimentData experiment, float x) {
             if (x == 0) {
                 return 1;
-            } else if (myExperiment.slitNum == 1) {
-                return (float)Math.Pow((Math.Sin((Math.PI * myExperiment.slitWidth * x) / (myExperiment.waveLength * myExperiment.lengthToScreen)) / ((Math.PI * myExperiment.slitWidth * x) / (myExperiment.waveLength * myExperiment.lengthToScreen))), 2);
-            } else if (myExperiment.slitNum == 2) {
-                return (float)(Math.Pow((Math.Sin((Math.PI * myExperiment.slitWidth * x) / (myExperiment.waveLength * myExperiment.lengthToScreen)) / ((Math.PI * myExperiment.slitWidth * x) / (myExperiment.waveLength * myExperiment.lengthToScreen))), 2) * (1 + Math.Cos((2 * Math.PI * myExperiment.slitPeriod * x) / (myExperiment.waveLength * myExperiment.lengthToScreen))) / 2);
+            } else if (experiment.slitNum == 1) {
+                return (float)Math.Pow((Math.Sin((Math.PI * experiment.slitWidth * x) / (experiment.waveLength * experiment.lengthToScreen)) / ((Math.PI * experiment.slitWidth * x) / (experiment.waveLength * experiment.lengthToScreen))), 2);
+            } else if (experiment.slitNum == 2) {
+                return (float)(Math.Pow((Math.Sin((Math.PI * experiment.slitWidth * x) / (experiment.waveLength * experiment.lengthToScreen)) / ((Math.PI * experiment.slitWidth * x) / (experiment.waveLength * experiment.lengthToScreen))), 2) * (1 + Math.Cos((2 * Math.PI * experiment.slitPeriod * x) / (experiment.waveLength * experiment.lengthToScreen))) / 2);
             } else {
-                return (float)(Math.Pow((Math.Sin((Math.PI * myExperiment.slitWidth * x) / (myExperiment.waveLength * myExperiment.lengthToScreen)) / ((Math.PI * myExperiment.slitWidth * x) / (myExperiment.waveLength * myExperiment.lengthToScreen))), 2) * Math.Pow((Math.Sin((myExperiment.slitNum * Math.PI * myExperiment.slitPeriod * x) / (myExperiment.waveLength * myExperiment.lengthToScreen)) / (Math.Sin((Math.PI * myExperiment.slitPeriod * x) / (myExperiment.waveLength * myExperiment.lengthToScreen)) * myExperiment.slitNum)), 2));
+                return (float)(Math.Pow((Math.Sin((Math.PI * experiment.slitWidth * x) / (experiment.waveLength * experiment.lengthToScreen)) / ((Math.PI * experiment.slitWidth * x) / (experiment.waveLength * experiment.lengthToScreen))), 2) * Math.Pow((Math.Sin((experiment.slitNum * Math.PI * experiment.slitPeriod * x) / (experiment.waveLength * experiment.lengthToScreen)) / (Math.Sin((Math.PI * experiment.slitPeriod * x) / (experiment.waveLength * experiment.lengthToScreen)) * experiment.slitNum)), 2));
             }
         }
 
-        private float Map(float value, float from1, float to1, float from2, float to2) => (value - from1) / (to1 - from1) * (to2 - from2) + from2;
+        double intensityByCoord(experimentData experiment, double x) {
+            if (x == 0) {
+                return 1;
+            } else if (experiment.slitNum == 1) {
+                return (double)Math.Pow((Math.Sin((Math.PI * experiment.slitWidth * x) / (experiment.waveLength * experiment.lengthToScreen)) / ((Math.PI * experiment.slitWidth * x) / (experiment.waveLength * experiment.lengthToScreen))), 2);
+            } else if (experiment.slitNum == 2) {
+                return (double)(Math.Pow((Math.Sin((Math.PI * experiment.slitWidth * x) / (experiment.waveLength * experiment.lengthToScreen)) / ((Math.PI * experiment.slitWidth * x) / (experiment.waveLength * experiment.lengthToScreen))), 2) * (1 + Math.Cos((2 * Math.PI * experiment.slitPeriod * x) / (experiment.waveLength * experiment.lengthToScreen))) / 2);
+            } else {
+                return (double)(Math.Pow((Math.Sin((Math.PI * experiment.slitWidth * x) / (experiment.waveLength * experiment.lengthToScreen)) / ((Math.PI * experiment.slitWidth * x) / (experiment.waveLength * experiment.lengthToScreen))), 2) * Math.Pow((Math.Sin((experiment.slitNum * Math.PI * experiment.slitPeriod * x) / (experiment.waveLength * experiment.lengthToScreen)) / (Math.Sin((Math.PI * experiment.slitPeriod * x) / (experiment.waveLength * experiment.lengthToScreen)) * experiment.slitNum)), 2));
+            }
+        }
+
+        float Map(float value, float from1, float to1, float from2, float to2) => (value - from1) / (to1 - from1) * (to2 - from2) + from2;
+        double Map(double value, double from1, double to1, double from2, double to2) => (value - from1) / (to1 - from1) * (to2 - from2) + from2;
 
         private void drawCoordSystem(Graphics myGraph) {
             Pen blackPen = new Pen(Color.FromArgb(100, Color.Black));
@@ -113,17 +126,14 @@ namespace Difraction_simulation {
 
             int nmbInterv = (int)((xMaxReal + Math.Abs(xMinReal)) / xStepReal + 1);
 
-            double yStepReal = intensityByCoord(xMinReal);
+            double yStepReal = intensityByCoord(myExperiment, xMinReal);
 
             float xPrevReal = xMinReal;
-            float intensityPrev = intensityByCoord(xPrevReal);
-
-            SolidBrush drawBrush = new SolidBrush(Color.Red);
-            Font maxCoordFont = new Font("Arial", 10);
+            float intensityPrev = intensityByCoord(myExperiment, xPrevReal);
 
             for (int i = 0; i < nmbInterv; i++) {
                 float xReal = xPrevReal + xStepReal;
-                float intensityReal = intensityByCoord(xReal);
+                float intensityReal = intensityByCoord(myExperiment, xReal);
                 myLine.x1 = (int)(Map(xPrevReal, xMinReal, xMaxReal, 0, graphBox.Width));
                 myLine.x2 = (int)(Map(xReal, xMinReal, xMaxReal, 0, graphBox.Width));
                 myLine.y1 = graphBox.Height - (int)(Map(intensityPrev, yMinReal, yMaxReal, 0, graphBox.Height - yOffset));
@@ -135,11 +145,36 @@ namespace Difraction_simulation {
             }
         }
 
-        float getCoordOfMax(int m) {
+        void drawEnvelope(Graphics myGraph) {
+            lineCoord myLine;
+            int nmbInterv = (int)((xMaxReal + Math.Abs(xMinReal)) / xStepReal + 1);
+            float xPrevReal = xMinReal;
+            experimentData experiment_t = myExperiment;
+            experiment_t.slitNum = 1;
+            float intensityPrev = intensityByCoord(experiment_t, xPrevReal);
+
+            Pen greenPen = new Pen(Color.Green);
+            greenPen.Width = 1;
+
+            for (int i = 0; i < nmbInterv; i++) {
+                float xReal = xPrevReal + xStepReal;
+                float intensityReal = intensityByCoord(experiment_t, xReal);
+                myLine.x1 = (int)(Map(xPrevReal, xMinReal, xMaxReal, 0, graphBox.Width));
+                myLine.x2 = (int)(Map(xReal, xMinReal, xMaxReal, 0, graphBox.Width));
+                myLine.y1 = graphBox.Height - (int)(Map(intensityPrev, yMinReal, yMaxReal, 0, graphBox.Height - yOffset));
+                myLine.y2 = graphBox.Height - (int)(Map(intensityReal, yMinReal, yMaxReal, 0, graphBox.Height - yOffset));
+
+                myGraph.DrawLine(greenPen, myLine.x1, myLine.y1 - yOffset, myLine.x2, myLine.y2 - yOffset);
+                xPrevReal = xReal;
+                intensityPrev = intensityReal;
+            }
+        }
+
+        double getCoordOfMax(int m) {
             if (myExperiment.slitNum == 1) {
-                return (float)((2 * m + 1) * myExperiment.waveLength * myExperiment.lengthToScreen / (2 * myExperiment.slitWidth));
+                return (double)((2 * m + 1) * myExperiment.waveLength * myExperiment.lengthToScreen / (2 * myExperiment.slitWidth));
             } else {
-                return (float)(m * myExperiment.waveLength * myExperiment.lengthToScreen / myExperiment.slitPeriod);
+                return (double)(m * myExperiment.waveLength * myExperiment.lengthToScreen / myExperiment.slitPeriod);
             }
         }
 
@@ -147,35 +182,38 @@ namespace Difraction_simulation {
             SolidBrush redBrush = new SolidBrush(Color.Red);
             SolidBrush greenBrush = new SolidBrush(Color.Green);
             Font maxCoordFont = new Font("Arial", 10);
-            float intensityReal = 1;
+            double intensityReal = 1;
 
             for (int i = 1; i <= numOfMax; i++) {
-                float xReal = getCoordOfMax(i);
+                double xReal = getCoordOfMax(i);
                 int x = (int)(Map(xReal, xMinReal, xMaxReal, 0, graphBox.Width));
-                intensityReal = intensityByCoord(xReal);
+                intensityReal = intensityByCoord(myExperiment, xReal);
                 int y = graphBox.Height - (int)(Map(intensityReal, yMinReal, yMaxReal, 0, graphBox.Height - yOffset));
-                var coordText = Math.Round(xReal * 1000).ToString();
-                myGraph.DrawString(coordText, maxCoordFont, redBrush, x - coordText.Length * 9, y - yOffset - 35);
-                myGraph.DrawString(i.ToString(), maxCoordFont, greenBrush, x + 5, y - yOffset - 35);
-                //myGraph.FillEllipse(redBrush, new Rectangle(x - 5, y - yOffset - 5, 10, 10)); //disabled marks on peeks because of inaccuracy of geyCoordMax formulas
 
-                myGraph.DrawString(coordText, maxCoordFont, redBrush, 2 * xCenterCoord - x - coordText.Length * 9, y - yOffset - 35);
+                var coordText = Math.Round(xReal * 1000, 2).ToString();
+                myGraph.DrawString(coordText, maxCoordFont, redBrush, x - coordText.Length * 4, graphBox.Height - yOffset);
+                myGraph.DrawString(i.ToString(), maxCoordFont, greenBrush, x + 5, y - yOffset - 35);
+
+                myGraph.DrawString(coordText, maxCoordFont, redBrush, 2 * xCenterCoord - x - coordText.Length * 4, graphBox.Height - yOffset);
                 myGraph.DrawString(i.ToString(), maxCoordFont, greenBrush, 2 * xCenterCoord - x + 5, y - yOffset - 35);
-                //myGraph.FillEllipse(redBrush, new Rectangle(2 * xCenterCoord - x - 5, y - yOffset - 5, 10, 10));
             }
         }
 
-
-        private void DrawGraphButton_Click(object sender, EventArgs e) {
+        void prepareToGraph(Graphics myGraph) {
             xMinReal = float.Parse(xMinText.Text) / 1000;   //in metres
             xMaxReal = float.Parse(xMaxText.Text) / 1000;
             xStepReal = Map(1, 0, graphBox.Width, 0, Math.Abs(xMinReal) + Math.Abs(xMaxReal));
-            Graphics myGraph = graphBox.CreateGraphics();
+            yMaxReal = float.Parse(iMaxText.Text);
             myGraph.Clear(Color.White);
+        }
+
+        private void DrawGraphButton_Click(object sender, EventArgs e) {
+            Graphics myGraph = graphBox.CreateGraphics();
+            prepareToGraph(myGraph);
             drawGraph(myGraph);
             drawGraphSign(myGraph);
-            if (gridCheckBox.Checked) {
-                drawCoordSystem(myGraph);
+            if (myExperiment.slitNum > 1) {
+                drawEnvelope(myGraph);
             }
         }
 
@@ -188,15 +226,12 @@ namespace Difraction_simulation {
         }
 
         private void GraphForm_ResizeEnd(object sender, EventArgs e) {
-            xMinReal = float.Parse(xMinText.Text) / 1000;   //in metres
-            xMaxReal = float.Parse(xMaxText.Text) / 1000;
-            xStepReal = Map(1, 0, graphBox.Width, 0, Math.Abs(xMinReal) + Math.Abs(xMaxReal));
             Graphics myGraph = graphBox.CreateGraphics();
-            myGraph.Clear(Color.White);
+            prepareToGraph(myGraph);
             drawGraph(myGraph);
             drawGraphSign(myGraph);
-            if (gridCheckBox.Checked) {
-                drawCoordSystem(myGraph);
+            if (myExperiment.slitNum > 1) {
+                drawEnvelope(myGraph);
             }
         }
     }
