@@ -14,8 +14,7 @@ namespace Difraction_simulation {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e) {
-
+        private void startButton_Click(object sender, EventArgs e) {
             try {
                 GraphForm.myExperiment.lengthToScreen = float.Parse(lengthToScreen.Text);
                 GraphForm.myExperiment.waveLength = float.Parse(waveLength.Text) / Math.Pow(10, 9);
@@ -30,7 +29,7 @@ namespace Difraction_simulation {
             graphForm.ShowDialog();
         }
 
-        private void button2_Click(object sender, EventArgs e) {
+        private void aboutButton_Click(object sender, EventArgs e) {
             var aboutForm = new AboutForm();
             aboutForm.ShowDialog();
         }

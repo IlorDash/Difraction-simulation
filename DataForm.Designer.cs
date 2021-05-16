@@ -32,13 +32,13 @@ namespace Difraction_simulation {
             this.slitWidth = new System.Windows.Forms.TextBox();
             this.slitPeriod = new System.Windows.Forms.TextBox();
             this.dataName1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.startButton = new System.Windows.Forms.Button();
             this.dataName2 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.aboutButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // waveLength
@@ -98,15 +98,15 @@ namespace Difraction_simulation {
             this.dataName1.TabStop = false;
             this.dataName1.Text = "Wave lentgh λ [nm]";
             // 
-            // button1
+            // startButton
             // 
-            this.button1.Location = new System.Drawing.Point(128, 231);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Start";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.startButton.Location = new System.Drawing.Point(128, 231);
+            this.startButton.Name = "startButton";
+            this.startButton.Size = new System.Drawing.Size(94, 23);
+            this.startButton.TabIndex = 5;
+            this.startButton.Text = "Start";
+            this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
             // dataName2
             // 
@@ -164,28 +164,28 @@ namespace Difraction_simulation {
             this.textBox.TabStop = false;
             this.textBox.Text = "Enter experiment conditions";
             // 
-            // button2
+            // aboutButton
             // 
-            this.button2.Location = new System.Drawing.Point(128, 260);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 23);
-            this.button2.TabIndex = 31;
-            this.button2.Text = "About";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.aboutButton.Location = new System.Drawing.Point(128, 260);
+            this.aboutButton.Name = "aboutButton";
+            this.aboutButton.Size = new System.Drawing.Size(94, 23);
+            this.aboutButton.TabIndex = 31;
+            this.aboutButton.Text = "About";
+            this.aboutButton.UseVisualStyleBackColor = true;
+            this.aboutButton.Click += new System.EventHandler(this.aboutButton_Click);
             // 
             // DataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(354, 315);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.aboutButton);
             this.Controls.Add(this.textBox);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.dataName2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.startButton);
             this.Controls.Add(this.dataName1);
             this.Controls.Add(this.slitPeriod);
             this.Controls.Add(this.slitWidth);
@@ -214,12 +214,12 @@ namespace Difraction_simulation {
         private System.Windows.Forms.TextBox slitWidth;
         private System.Windows.Forms.TextBox slitPeriod;
         private System.Windows.Forms.TextBox dataName1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.TextBox dataName2;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button aboutButton;
     }
 }
